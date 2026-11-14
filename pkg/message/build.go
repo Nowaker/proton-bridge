@@ -441,6 +441,14 @@ func getMessageHeader(msg proton.Message, opts JobOptions) message.Header {
 		}
 	}
 
+	// Set our conversation ID if requested.
+	// Together with the internal ID it locates the message in the web app.
+	if opts.AddConversationID {
+		if msg.ConversationID != "" {
+			setHeaderIfNeeded(&hdr, "X-Pm-Conversation-Id", msg.ConversationID)
+		}
+	}
+
 	// Set our server date if requested.
 	// Can be useful to see how long it took for a message to arrive.
 	if opts.AddMessageDate {

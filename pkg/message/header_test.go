@@ -136,6 +136,24 @@ func FuzzReadHeaderBody(f *testing.F) {
 	})
 }
 
+func TestConversationIDHeader(t *testing.T) {
+	literal := []byte("Subject: conversation test\r\nFrom: Dummy <dummy@proton.me>\r\nTo: Test <test@proton.me>\r\nDate: Tue, 15 Oct 2024 07:54:39 +0000\r\nContent-Type: text/plain\r\n\r\nlorem")
+
+	message := newTestMessageFromRFC822(t, literal)
+	message.ConversationID = "conversationID"
+
+	conversationIDHeader := func(opts JobOptions) string {
+		hdr := getMessageHeader(message, opts)
+		return hdr.Get("X-Pm-Conversation-Id")
+	}
+
+	require.Equal(t, "conversationID", conversationIDHeader(JobOptions{AddConversationID: true}))
+	require.Empty(t, conversationIDHeader(JobOptions{}))
+
+	message.ConversationID = ""
+	require.Empty(t, conversationIDHeader(JobOptions{AddConversationID: true}))
+}
+
 func TestHeaderOrder(t *testing.T) {
 	literal := []byte(`X-Pm-Content-Encryption: end-to-end
 X-Pm-Origin: internal

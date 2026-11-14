@@ -563,6 +563,7 @@ func defaultMessageJobOpts() bmessage.JobOptions {
 		SanitizeDate:           true, // Whether to replace all dates before 1970 with RFC822's birthdate.
 		AddInternalID:          true, // Whether to include MessageID as X-Pm-Internal-Id.
 		AddExternalID:          true, // Whether to include ExternalID as X-Pm-External-Id.
+		AddConversationID:      true, // Whether to include ConversationID as X-Pm-Conversation-Id.
 		AddMessageDate:         true, // Whether to include message time as X-Pm-Date.
 		AddMessageIDReference:  true, // Whether to include the MessageID in References.
 	}
