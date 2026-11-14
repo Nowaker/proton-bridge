@@ -22,6 +22,7 @@ type JobOptions struct {
 	SanitizeDate           bool // Whether to replace all dates before 1970 with RFC822's birthdate.
 	AddInternalID          bool // Whether to include MessageID as X-Pm-Internal-Id.
 	AddExternalID          bool // Whether to include ExternalID as X-Pm-External-Id.
+	AddConversationID      bool // Whether to include ConversationID as X-Pm-Conversation-Id.
 	AddMessageDate         bool // Whether to include message time as X-Pm-Date.
 	AddMessageIDReference  bool // Whether to include the MessageID in References.
 	SanitizeMBOXHeaderLine bool // Whether to ignore header line representing MBOX delimiter
