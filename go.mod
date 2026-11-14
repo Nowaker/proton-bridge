@@ -160,3 +160,5 @@ replace (
 	github.com/keybase/go-keychain => github.com/ProtonMail/go-keychain v0.0.0-20250929142014-ea8548dff768
 	github.com/keys-pub/go-libfido2 => github.com/ProtonMail/go-libfido2 v0.0.0-20250916110427-df894d6d07a1
 )
+
+replace github.com/ProtonMail/go-proton-api => github.com/Nowaker/go-proton-api v0.0.0-20261114154147-aba1a4fbb96f
